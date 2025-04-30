@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1745919992667" clover="3.2.0">
-  <project timestamp="1745919992667" name="All files">
-    <metrics statements="397" coveredstatements="397" conditionals="31" coveredconditionals="31" methods="14" coveredmethods="14" elements="442" coveredelements="442" complexity="0" loc="397" ncloc="397" packages="6" files="7" classes="7"/>
+<coverage generated="1745980549638" clover="3.2.0">
+  <project timestamp="1745980549638" name="All files">
+    <metrics statements="396" coveredstatements="396" conditionals="31" coveredconditionals="31" methods="14" coveredmethods="14" elements="441" coveredelements="441" complexity="0" loc="396" ncloc="396" packages="6" files="7" classes="7"/>
     <package name="src.config">
       <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="db.js" path="D:\IMANI_PRIMA\Tugas_3\Scheduler\src\config\db.js">
@@ -412,30 +412,29 @@
       </file>
     </package>
     <package name="test.integration">
-      <metrics statements="21" coveredstatements="21" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <metrics statements="20" coveredstatements="20" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
       <file name="app.mock.js" path="D:\IMANI_PRIMA\Tugas_3\Scheduler\test\integration\app.mock.js">
-        <metrics statements="21" coveredstatements="21" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <metrics statements="20" coveredstatements="20" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="15" type="cond" truecount="1" falsecount="0"/>
+        <line num="5" count="15" type="cond" truecount="1" falsecount="0"/>
+        <line num="6" count="15" type="stmt"/>
         <line num="7" count="15" type="stmt"/>
         <line num="8" count="15" type="stmt"/>
-        <line num="9" count="15" type="stmt"/>
-        <line num="10" count="15" type="cond" truecount="1" falsecount="0"/>
+        <line num="9" count="15" type="cond" truecount="1" falsecount="0"/>
+        <line num="10" count="10" type="stmt"/>
         <line num="11" count="10" type="stmt"/>
-        <line num="12" count="10" type="stmt"/>
+        <line num="12" count="15" type="stmt"/>
         <line num="13" count="15" type="stmt"/>
         <line num="14" count="15" type="stmt"/>
         <line num="15" count="15" type="stmt"/>
         <line num="16" count="15" type="stmt"/>
         <line num="17" count="15" type="stmt"/>
         <line num="18" count="15" type="stmt"/>
-        <line num="19" count="15" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
-        <line num="21" count="1" type="stmt"/>
       </file>
     </package>
   </project>

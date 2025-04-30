@@ -1,10 +1,9 @@
 const cron = require('node-cron')
 const productService = require('../services/product.service');
-const { default: fastify } = require('fastify');
 
 function startSchedulers(fastify) {
     cron.schedule('*/10 * * * * *', async () => {
-        fastify.log.debug(`Running job every 5 seconds`);
+        fastify.log.debug(`Running job every 10 seconds`);
         try {
             const products = await productService.getAll();
             

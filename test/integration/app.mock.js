@@ -1,4 +1,3 @@
-// test/mocks/app.mock.js
 'use strict';
 
 const Fastify = require('fastify');

@@ -5,29 +5,57 @@ const buildApp = require('./src/app')
 const createEmailWorker = require('./src/jobs/emailWorker')
 const { startSchedulers } = require('./src/jobs/scheduler')
 
-// buat Fastify instance dengan logger
+
 const fastify = buildApp({
   logger: {
     level: 'debug',
     transport: {
-      target: 'pino-pretty',
-      options: {
-        colorize: true,
-        translateTime: 'SYS:standard',
-        ignorePaths: ['req-headers', 'res-headers'],
-        singleLine: true
+      targets: [
+        {  
+          target: 'pino/file',
+          options: {
+            destination: './src/logs/server.log',
+            mkdir: true
+          },
+          level: 'warn' // warn, error, fatal 
+        },
+        {
+
+          target: 'pino-pretty',
+          options: {
+            colorize: true,
+            translateTime: 'SYS:standard',
+            singleLine: true,
+            errorLikeObjectKeys: ['err'],   // hanya ambil error.message
+            ignore: 'pid,hostname'         
+          },
+          level: 'debug' 
+        }
+      ]
+    },
+    serializers: {
+      err (err) {
+        return {
+          type: err.type,
+          name: err.name,
+          message: err.message,
+          code: err.code,
+          statusCode: err.statusCode
+          // stack: err.stack // tidak ditampilkan agar ringkas
+        }
       }
     }
   }
 })
 
-// jalankan worker & cron
-startSchedulers(fastify)
-createEmailWorker(fastify)
 
-// mulai server
-const port = process.env.PORT || 3000
-const host = process.env.HOST || '0.0.0.0'
+
+//startSchedulers(fastify)
+//createEmailWorker(fastify)
+
+
+const port = process.env.PORT 
+const host = process.env.HOST 
 fastify.listen({ port, host }, (err, address) => {
   if (err) {
     fastify.log.error(err)
