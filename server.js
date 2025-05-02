@@ -2,7 +2,6 @@
 require('dotenv').config()
 
 const buildApp = require('./src/app')
-const createEmailWorker = require('./src/jobs/emailWorker')
 const { startSchedulers } = require('./src/jobs/scheduler')
 
 const IS_PRODUCTION = process.env.RENDER === 'true' || process.env.HOST?.includes('render') 
@@ -10,6 +9,7 @@ const LOG_LEVEL = IS_PRODUCTION ? 'warn' : 'debug'
 
 const loggerConfig = {
   level: LOG_LEVEL,
+  // file: './src/logs/server.log',
   serializers: {
     err: ({ name, message, code, statusCode }) => ({ name, message, code, statusCode }),
     req: ({ method, url, id }) => ({ method, url, requestId: id })
@@ -30,7 +30,7 @@ const fastify = buildApp({ logger: loggerConfig })
 
 
   //startSchedulers(fastify)
-  //createEmailWorker(fastify)
+  
 
 
 const port = process.env.PORT || 10000

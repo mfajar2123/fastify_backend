@@ -1,4 +1,4 @@
-const { addEmailToQueue } = require('../jobs/emailQueue');
+const { sendWelcomeEmail } = require('../jobs/mailers')
 const authService = require('../services/auth.service');
 
 class AuthController {
@@ -6,14 +6,16 @@ class AuthController {
     try {
       const userData = await authService.register(request.body);
       const { password, ...user } = userData; 
-      // Job kirim email ke queue
-      // await addEmailToQueue({
-      //   email: user.email,
-      //   subject: 'Welcome',
-      //   message: `Hi ${user.username}, thanks for registering!`
-      // });
-
+    
       reply.code(201).send({ success: true, data: user });
+
+      setImmediate(() => {
+        sendWelcomeEmail(user.email, user.username)
+          .then(() => request.log.info(`Email sent to ${user.email}`))
+          .catch(err => request.log.error({ err }, 'Failed to send welcome email'));
+      });
+
+      
     } catch (err) {
      
       request.log.error({ err }, 'Registration failed');
