@@ -8,27 +8,22 @@ function buildApp(opts = {}) {
     ...opts,
     ajv: {
       customOptions: {
-        allErrors: true,         // tampilkan semua error validasi, bukan hanya satu
-        removeAdditional: true, // hapus properti tak dikenal
-        useDefaults: true,      // pakai default value jika ada
-        coerceTypes: true       // ubah tipe data agar sesuai (misal "123" jadi number)
+        allErrors: true,         
+        removeAdditional: true, 
+        useDefaults: true,      
+        coerceTypes: true       
       }
     }
   })
   
-
-  // register plugin auth & swagger
   fastify.register(require('./plugins/auth'))
   fastify.register(require('./plugins/swagger'))
   fastify.register(require('@fastify/cors'), {
-    origin: true, // mengizinkan semua origin
-    //credentials: true // opsional, jika butuh cookie atau auth header
+    origin: true, 
   })
 
-  // register routes
   fastify.register(require('./routes/auth.routes'), { prefix: '/api' })
   fastify.register(require('./routes/product.routes'), { prefix: '/api' })
-
 
   fastify.setErrorHandler((err, request, reply) => {
     if (err.validation) {
@@ -45,7 +40,6 @@ function buildApp(opts = {}) {
   })
   
 
-  // healthcheck / root endpoint
   fastify.get('/', {
     schema: {
       response: {
