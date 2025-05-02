@@ -16,3 +16,4 @@
 {"level":50,"time":1746159598022,"pid":53696,"hostname":"MFAJAR-2123","reqId":"req-1","err":{"name":"Error","message":"getaddrinfo ENOTFOUND dpg-d0a48ujuibrs73aq93c0-a","code":"ENOTFOUND"},"msg":"getaddrinfo ENOTFOUND dpg-d0a48ujuibrs73aq93c0-a"}
 {"level":50,"time":1746159742246,"pid":46300,"hostname":"MFAJAR-2123","reqId":"req-1","err":{"name":"PostgresError","message":"SSL/TLS required","code":"28000"},"msg":"SSL/TLS required"}
 {"level":50,"time":1746159827475,"pid":54928,"hostname":"MFAJAR-2123","reqId":"req-1","err":{"name":"PostgresError","message":"relation \"products\" does not exist","code":"42P01"},"msg":"relation \"products\" does not exist"}
+{"level":50,"time":1746170692435,"pid":30700,"hostname":"MFAJAR-2123","reqId":"req-2","err":{"name":"PostgresError","message":"duplicate key value violates unique constraint \"users_username_unique\"","code":"23505"},"msg":"Registration failed"}

@@ -11,7 +11,7 @@ const LOG_LEVEL = process.env.LOG_LEVEL || 'warn'
 const loggerConfig = {
   
   level: NODE_ENV === 'production' ? LOG_LEVEL : 'warn',
-  file: './src/logs/server.log',
+  // file: './src/logs/server.log',
   serializers: {
     err (err) {
       return {
