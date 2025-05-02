@@ -74,8 +74,10 @@ const fastify = buildApp({ logger: loggerConfig })
   // startSchedulers(fastify)
   // createEmailWorker(fastify)
 
-const port = process.env.PORT  
-const host = process.env.HOST 
+
+const port = process.env.PORT || 3000
+const host = process.env.HOST || '0.0.0.0'
+
 
 const start = async () => {
   try {
