@@ -8,22 +8,41 @@ const NODE_ENV = process.env.NODE_ENV || 'production'
 const LOG_LEVEL = process.env.LOG_LEVEL || 'warn'
 
 // Configure logger based on environment - using simple configuration without transport plugins
-const loggerConfig = {
+// const loggerConfig = {
   
+//   level: NODE_ENV === 'production' ? LOG_LEVEL : 'warn',
+//   // file: './src/logs/server.log',
+//   serializers: {
+//     err (err) {
+//       return {
+//         name: err.name,
+//         message: err.message,
+//         code: err.code,
+//         statusCode: err.statusCode,
+//         type: err.type
+//       }
+//     }
+//   }
+// }
+
+const loggerConfig = {
   level: NODE_ENV === 'production' ? LOG_LEVEL : 'warn',
-  // file: './src/logs/server.log',
   serializers: {
-    err (err) {
-      return {
-        name: err.name,
-        message: err.message,
-        code: err.code,
-        statusCode: err.statusCode,
-        type: err.type
-      }
-    }
+    err: ({ message, code, statusCode }) => ({ message, code, statusCode }),
+    req: ({ method, url, id }) => ({ method, url, requestId: id })
+  },
+  formatters: {
+    level: label => ({ level: label.toUpperCase() }),
+    bindings: () => ({}), // hide pid/hostname
+    log: ({ msg, err }) => ({
+      message: msg,
+      ...(err && {
+        error: `${err.name || 'Error'} (${err.statusCode || err.code || ''}): ${err.message}`
+      })
+    })
   }
 }
+
 
 const fastify = buildApp({ logger: loggerConfig })
 // Uncomment these if needed after fixing the server startup issues
