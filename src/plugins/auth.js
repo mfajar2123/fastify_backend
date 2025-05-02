@@ -2,7 +2,7 @@ const fp = require('fastify-plugin');
 
 async function authPlugin(fastify, options) {
   await fastify.register(require('@fastify/jwt'), {
-    secret: process.env.JWT_SECRET || 'supersecretkey'
+    secret: 'MySuperSecretKeyForJWTs2025!!!!?' || 'supersecretkey'
   });
 
 
