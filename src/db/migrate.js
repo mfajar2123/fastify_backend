@@ -3,7 +3,12 @@ const { drizzle } = require('drizzle-orm/postgres-js');
 const { migrate } = require('drizzle-orm/postgres-js/migrator');
 const postgres = require('postgres');
 
-const migrationClient = postgres(process.env.DATABASE_URL, { max: 1 });
+
+const migrationClient = postgres(process.env.DATABASE_URL, {
+  max: 1,
+  ssl: 'require'
+});
+
 
 async function runMigration() {
   try {
