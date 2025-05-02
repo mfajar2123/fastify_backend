@@ -7,53 +7,23 @@ const { startSchedulers } = require('./src/jobs/scheduler')
 const NODE_ENV = process.env.NODE_ENV || 'production'
 const LOG_LEVEL = process.env.LOG_LEVEL || 'warn'
 
-// Configure logger based on environment
-const loggerConfig = NODE_ENV === 'production' 
-  ? {
-      level: LOG_LEVEL,
-      transport: {
-        target: 'pino-pretty',
-        options: {
-          colorize: false,
-          translateTime: 'SYS:standard',
-          singleLine: true
-        }
-      },
-      serializers: {
-        err (err) {
-          return {
-            name: err.name,
-            message: err.message,
-            code: err.code,
-            statusCode: err.statusCode
-          }
-        }
+// Configure logger based on environment - using simple configuration without transport plugins
+const loggerConfig = {
+  
+  level: NODE_ENV === 'production' ? LOG_LEVEL : 'warn',
+  file: './src/logs/server.log',
+  serializers: {
+    err (err) {
+      return {
+        name: err.name,
+        message: err.message,
+        code: err.code,
+        statusCode: err.statusCode,
+        type: err.type
       }
     }
-  : {
-      level: 'debug',
-      transport: {
-        target: 'pino-pretty',
-        options: {
-          colorize: true,
-          translateTime: 'SYS:standard',
-          singleLine: true,
-          errorLikeObjectKeys: ['err'],
-          ignore: 'pid,hostname'
-        }
-      },
-      serializers: {
-        err (err) {
-          return {
-            type: err.type,
-            name: err.name,
-            message: err.message,
-            code: err.code,
-            statusCode: err.statusCode
-          }
-        }
-      }
-    }
+  }
+}
 
 const fastify = buildApp({ logger: loggerConfig })
 // Uncomment these if needed after fixing the server startup issues
