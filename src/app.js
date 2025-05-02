@@ -20,6 +20,10 @@ function buildApp(opts = {}) {
   // register plugin auth & swagger
   fastify.register(require('./plugins/auth'))
   fastify.register(require('./plugins/swagger'))
+  fastify.register(require('@fastify/cors'), {
+    origin: true, // mengizinkan semua origin
+    //credentials: true // opsional, jika butuh cookie atau auth header
+  })
 
   // register routes
   fastify.register(require('./routes/auth.routes'), { prefix: '/api' })
