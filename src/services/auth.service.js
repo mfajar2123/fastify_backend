@@ -1,6 +1,6 @@
 const { db } = require('../config/db');
 const { users } = require('../db/schema');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const { eq } = require('drizzle-orm');
 
 class AuthService {
