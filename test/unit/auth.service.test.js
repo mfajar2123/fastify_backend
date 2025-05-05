@@ -1,5 +1,4 @@
-
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const authService = require('../../src/services/auth.service'); 
 
 // Mock dependencies
@@ -10,7 +9,7 @@ jest.mock('../../src/config/db.js', () => ({
   }
 }));
 
-jest.mock('bcrypt');
+jest.mock('bcryptjs');
 jest.mock('../../src/db/schema.js', () => ({
   users: {
     email: 'email',
