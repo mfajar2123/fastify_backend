@@ -17,3 +17,11 @@
 {"level":50,"time":1746159742246,"pid":46300,"hostname":"MFAJAR-2123","reqId":"req-1","err":{"name":"PostgresError","message":"SSL/TLS required","code":"28000"},"msg":"SSL/TLS required"}
 {"level":50,"time":1746159827475,"pid":54928,"hostname":"MFAJAR-2123","reqId":"req-1","err":{"name":"PostgresError","message":"relation \"products\" does not exist","code":"42P01"},"msg":"relation \"products\" does not exist"}
 {"level":50,"time":1746170692435,"pid":30700,"hostname":"MFAJAR-2123","reqId":"req-2","err":{"name":"PostgresError","message":"duplicate key value violates unique constraint \"users_username_unique\"","code":"23505"},"msg":"Registration failed"}
+{"level":"INFO","time":1746414398127,"msg":"Server listening at http://0.0.0.0:10000"}
+{"level":"INFO","time":1746414398128,"msg":"Server running at 0.0.0.0:10000"}
+{"level":"INFO","time":1746414398128,"msg":"Logging level: debug"}
+{"level":"INFO","time":1746414426938,"reqId":"req-1","msg":"incoming request"}
+{"level":"INFO","time":1746414428353,"reqId":"req-1","msg":"request completed"}
+{"level":"INFO","time":1746414469251,"reqId":"req-2","msg":"incoming request"}
+{"level":"ERROR","time":1746414469259,"reqId":"req-2","error":"FastifyError (401): Authorization token expired","msg":"Authentication Failed"}
+{"level":"INFO","time":1746414469261,"reqId":"req-2","msg":"request completed"}

@@ -3,6 +3,7 @@ const LOG_LEVEL = IS_PRODUCTION ? 'warn' : 'debug';
 
 const loggerConfig = {
   level: LOG_LEVEL,
+    file: './src/logs/server.log',
   serializers: {
     err: ({ name, message, code, statusCode }) => ({ name, message, code, statusCode }),
     req: ({ method, url, id }) => ({ method, url, requestId: id })
